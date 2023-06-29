@@ -1,3 +1,4 @@
+import 'package:bookly/Features/Home/presentation/view/Widget/BookRatimg.dart';
 import 'package:bookly/core/utilts/Styles.dart';
 import 'package:bookly/core/utilts/app_router.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +54,7 @@ class BestSellerListViewItem extends StatelessWidget {
                   ),
                   Text("J.K. Rowling",
                       style:
-                          Styles.textStyles14.copyWith(color: const Color(0XFF8F8989))),
+                      Styles.textStyles14.copyWith(color: const Color(0XFF8F8989))),
                   const SizedBox(
                     height: 4,
                   ),
@@ -64,27 +65,8 @@ class BestSellerListViewItem extends StatelessWidget {
                         style: Styles.textStyles20,
                       ),
                       Spacer(),
-                      Row(
-                        children: [
-                          const Icon(
-                            FontAwesomeIcons.solidStar,
-                            color: Color(0XFFFFDD4F),
-                            size: 14,
-                          ),
-                          const SizedBox(
-                            width: 6.5,
-                          ),
-                          Text(
-                            '4.8',
-                            style: Styles.textStyles14.copyWith(fontSize: 16),
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Text('(2390)',
-                              style: Styles.textStyles14
-                                  .copyWith(color: Color(0XFF8F8989))),
-                        ],
+                      BookRating(
+                        mainAxisAlignment: MainAxisAlignment.center,
                       )
                     ],
                   )

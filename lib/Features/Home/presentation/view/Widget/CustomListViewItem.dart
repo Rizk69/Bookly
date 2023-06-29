@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class CustomListViewItem extends StatelessWidget {
-  const CustomListViewItem({Key? key}) : super(key: key);
+class CustomBookImage extends StatelessWidget {
+  const CustomBookImage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 2.7/4,
+      aspectRatio: 2.7 / 4,
       child: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(18),
@@ -19,17 +19,5 @@ class CustomListViewItem extends StatelessWidget {
             )),
       ),
     );
-  }
-}
-class FeaturedBooksListView extends StatelessWidget {
-  const FeaturedBooksListView({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(itemBuilder: (context,index){
-
-      return const CustomListViewItem();
-
-    });
   }
 }
