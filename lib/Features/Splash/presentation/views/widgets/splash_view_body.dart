@@ -23,13 +23,11 @@ class _SplashViewBodyState extends State<SplashViewBody>
     // TODO: implement initState
     super.initState();
     initSlidingAnimation();
-    Future.delayed(const Duration(seconds: 2),
-        (){
-     GoRouter.of(context).push(AppRouter.KHomeView);
-        }
-    );
-
+    Future.delayed(const Duration(seconds: 2), () {
+      GoRouter.of(context).push(AppRouter.KHomeView);
+    });
   }
+
   @override
   void dispose() {
     // TODO: implement dispose
@@ -48,11 +46,10 @@ class _SplashViewBodyState extends State<SplashViewBody>
           builder: (BuildContext context, Widget? child) {
             return SlideTransition(
               position: slidingAnimation2,
-              child:  Image.asset(AssetsData.logo),
+              child: Image.asset(AssetsData.logo),
             );
           },
         ),
-
         SizedBox(
           height: 15,
         ),
@@ -60,7 +57,8 @@ class _SplashViewBodyState extends State<SplashViewBody>
       ],
     );
   }
-  void initSlidingAnimation(){
+
+  void initSlidingAnimation() {
     animationController =
         AnimationController(vsync: this, duration: const Duration(seconds: 1));
     slidingAnimation = Tween<Offset>(begin: Offset(0, 5), end: Offset(0, 0))
