@@ -46,7 +46,7 @@ class SearchResultListView extends StatelessWidget {
               right: 8,
               bottom: 10,
             ),
-            child: BookListViewItem(),
+           // child: BookListViewItem(),
           );
         });
   }

@@ -27,7 +27,7 @@ class HomeViewBody extends StatelessWidget {
                   height: 50,
                 ),
                 Text(
-                  'Best Seller',
+                  'News Books',
                   textAlign: TextAlign.left,
                   style: Styles.textStyles18,
                 ),
