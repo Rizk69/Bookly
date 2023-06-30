@@ -10,7 +10,8 @@ class CustomBottom extends StatelessWidget {
       required this.topLeft,
       required this.bottomLeft,
       required this.topRight,
-      required this.colorText})
+      required this.colorText,
+      this.onPressed})
       : super(key: key);
   final Color backgroundColor;
   final Color colorText;
@@ -20,13 +21,14 @@ class CustomBottom extends StatelessWidget {
   final double topLeft;
   final double bottomLeft;
   final double topRight;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 48,
       child: TextButton(
-        onPressed: () {},
+        onPressed: onPressed,
         child: Text(
           text,
           style: Styles.textStyles14.copyWith(

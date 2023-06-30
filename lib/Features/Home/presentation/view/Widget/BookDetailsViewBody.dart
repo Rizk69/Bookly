@@ -4,11 +4,13 @@ import 'package:bookly/Features/Home/presentation/view/Widget/CustomListViewItem
 import 'package:bookly/Features/Home/presentation/view/Widget/SimilarBooksListView.dart';
 import 'package:bookly/core/utilts/Styles.dart';
 import 'package:flutter/material.dart';
-
+import '../../../data/models/bookly_models.dart';
 import 'CustomBookDetailsAppBar.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
-  const BookDetailsViewBody({Key? key}) : super(key: key);
+  const BookDetailsViewBody({Key? key, required this.booklyModels})
+      : super(key: key);
+  final BooklyModels booklyModels;
 
   @override
   Widget build(BuildContext context) {
@@ -25,21 +27,24 @@ class BookDetailsViewBody extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: width * .17),
-              child: CustomBookImage(imageUrl: 'lib/Assets/Book 1 High.png'),
+              child: CustomBookImage(
+                  imageUrl:
+                      (booklyModels.volumeInfo?.imageLinks?.thumbnail) ?? ''),
             ),
             const SizedBox(
               height: 40,
             ),
-            const Text(
-              'The Jungle Book',
+            Text(
+              booklyModels.volumeInfo?.title ?? '',
               style: TextStyle(fontSize: 30),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.center,
             ),
             const SizedBox(
               height: 6,
             ),
-            Text("Rudyard Kipling",
+            Text(booklyModels.volumeInfo?.authors![0] ?? 'Not Found',
                 style: Styles.textStyles14
                     .copyWith(fontSize: 21, color: const Color(0XFF8F8989))),
             const SizedBox(
@@ -47,13 +52,13 @@ class BookDetailsViewBody extends StatelessWidget {
             ),
             BookRating(
               mainAxisAlignment: MainAxisAlignment.center,
-              rating: 4,
-              count: 2390,
+              rating: booklyModels.volumeInfo?.averageRating ?? 0,
+              count: booklyModels.volumeInfo?.ratingsCount ?? 0,
             ),
             const SizedBox(
               height: 37,
             ),
-            const BooksAction(),
+            BooksAction(booklyModels: booklyModels),
             const SizedBox(
               height: 40,
             ),
@@ -65,7 +70,7 @@ class BookDetailsViewBody extends StatelessWidget {
             const SizedBox(
               height: 16,
             ),
-            const SimilarBooksListView()
+            SimilarBooksListView()
           ],
         ),
       ),

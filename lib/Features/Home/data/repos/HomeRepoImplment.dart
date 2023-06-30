@@ -15,7 +15,7 @@ class HomeRepoImplement implements HomeRepo {
     try {
       var data = await apiService.get(
           endPoint:
-              'volumes?Filtering=free-ebooks&Sorting=newest &q=subject:Programming');
+              'volumes?Filtering=free-ebooks&Sorting=newest &q=subject:Computer');
       List<BooklyModels> book = [];
       for (var item in data["items"]) {
         book.add(BooklyModels.fromJson(item));
@@ -34,6 +34,26 @@ class HomeRepoImplement implements HomeRepo {
     try {
       var data = await apiService.get(
           endPoint: 'volumes?Filtering=free-ebooks&q=subject:Programming');
+      List<BooklyModels> book = [];
+      for (var item in data["items"]) {
+        book.add(BooklyModels.fromJson(item));
+      }
+      return right(book);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.formDioException(e));
+      }
+      return left(ServerFailure(e.toString()));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<BooklyModels>>> fetchSimilarBooks(
+      {required String category}) async {
+    try {
+      var data = await apiService.get(
+          endPoint:
+              'volumes?Filtering=free-ebooks& Sorting=relevanc &q=subject:Programming');
       List<BooklyModels> book = [];
       for (var item in data["items"]) {
         book.add(BooklyModels.fromJson(item));
